@@ -1,0 +1,41 @@
+Microsoft Windows [Version 10.0.22631.2506]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Azara>docker image build -t middleware:0.0.1 D:\Django_Project\docker\docker_middleware
+[+] Building 1.5s (11/11) FINISHED                                                                       docker:default
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build definition from dockerfile                                                               0.0s
+ => => transferring dockerfile: 548B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.11.6                                                   1.3s
+ => [auth] library/python:pull token for registry-1.docker.io                                                      0.0s
+ => [1/5] FROM docker.io/library/python:3.11.6@sha256:9e00960bde4d9aafdcbf2f0fc5b31b15e1824fc795fd9b472717d085b59  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 71B                                                                                   0.0s
+ => CACHED [2/5] WORKDIR C:UsersAzarasource                                                                        0.0s
+ => CACHED [3/5] COPY middleware.py ./                                                                             0.0s
+ => CACHED [4/5] COPY requirements.txt ./                                                                          0.0s
+ => CACHED [5/5] RUN pip install -r requirements.txt                                                               0.0s
+ => exporting to image                                                                                             0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:246fbe9c50890aab64cd236d7263f7f639e83e509e1b7eaadd78acec3dc08e06                       0.0s
+ => => naming to docker.io/library/middleware:0.0.1                                                                0.0s
+WARNING: buildx: failed to read current commit information with git rev-parse --is-inside-work-tree
+
+C:\Users\Azara>docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+middleware   0.0.1     246fbe9c5089   9 minutes ago   1.03GB
+
+C:\Users\Azara>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\Azara>docker run -e PLC_NAME="PLC1" middleware:0.0.1
+
+C:\Users\Azara>docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS         PORTS     NAMES
+55b75407a35d   middleware:0.0.1   "python ./middleware…"   39 seconds ago   Up 4 seconds             angry_northcutt
+
+C:\Users\Azara>docker stop 55b75407a35d
+55b75407a35d
+
+C:\Users\Azara>
