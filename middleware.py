@@ -5,9 +5,12 @@ import datetime
 import threading
 import json
 import requests
+import os
 
-PLC_name = "PLC1"
+PLC_name = os.environ.get('PLC_NAME')
+
 broker = '192.168.1.1'
+
 url='http://127.0.0.1:8000/temp_sensors_msg/'
 #######################################################
 #to close the door after it got open
